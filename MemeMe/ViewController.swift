@@ -18,9 +18,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
-
+    
 // <<< Outlets
+    
+// MARK: Structs >>>
+    
+    struct Meme {
+        var topText: String
+        var bottomText: String
+        var originalImage: UIImage
+        var memedImage: UIImage
+    }
     
     let imagePicker = UIImagePickerController()
     
@@ -56,8 +66,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePicker, animated: true, completion: nil)
     }
     
-// <<< Actions
+    @IBAction func cancelMeme() {
+        imagePickerView.image = nil
+        shareButton.isEnabled = false
+        cancelButton.isEnabled = false
+        tfTop.text = nil
+        tfBottom.text = nil
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+    }
     
+    // MARK:  Image Picker Controller takes image from Album or Camera and returns it
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imagePickerView.contentMode = .scaleAspectFill
@@ -70,6 +88,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         }
         
     }
+    
+// MARK: Meme Text Field setup
+    
+    // Font styling
+//    let memeTextAttributes: [String: Any] =
+//        [
+//            NSAttributedString.Key.strokeColor.rawValue: UIColor.black,
+//            NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
+//            NSAttributedString.Key.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+//            NSAttributedString.Key.strokeWidth.rawValue: -3.0
+//        ]
+//    
+//    // Text Field setup
+//    func setupTextFields(_ textField: UITextField, with default: String) {
+//        textField.defaultTextAttributes = memeTextAttributes
+//        textField.textAlignment = .center
+//
+//    }
     
     
 // MARK: Keyboard Functions >>>
@@ -113,5 +149,45 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
 // <<< Keyboard Functions
+    
+    
+    // MARK:  Save, Generate & Share meme functions
+    
+    // Save Meme
+    func save() {
+        let meme = Meme(topText: tfTop.text!, bottomText: tfBottom.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        print(meme)
+    }
+    
+    // Generate Meme
+    func generateMemedImage() -> UIImage {
+        hideToolBars(when: true)
+        UIGraphicsBeginImageContext(self.view.frame.size)
+        view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
+        let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+        hideToolBars(when: false)
+        return memedImage
+    }
+    
+    // Hide top and bottom toolbars called while generating meme to keep toolbars out of generated image
+    func hideToolBars(when bool: Bool) {
+        toolBar.isHidden = bool
+        navBar.isHidden = bool
+    }
+    
+    // Share Meme
+    @IBAction func shareMeme(){
+        let memedImage = generateMemedImage()
+        let activityView = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        activityView.completionWithItemsHandler = {(activity, completed, items, error) in
+            if (completed) {
+                let _ = self.save()
+            }
+        }
+        
+        self.present(activityView, animated: true, completion: nil)
+    }
+    
 }
 
