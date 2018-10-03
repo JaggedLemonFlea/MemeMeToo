@@ -23,21 +23,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
 // <<< Outlets
     
-// MARK: Structs >>>
-    
-    struct Meme {
-        var topText: String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
-    }
-    
     let imagePicker = UIImagePickerController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tfTop.delegate = self
-        tfBottom.delegate = self
         imagePicker.delegate = self
     }
     
@@ -46,6 +35,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = imagePickerView.image != nil
         cancelButton.isEnabled = imagePickerView.image != nil
+        setupTextFields(tfTop, with: "TOP")
+        setupTextFields(tfBottom, with: "BOTTOM")
         subscribeToKeyboardNotifications()
     }
     
@@ -54,16 +45,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         unsubscribeFromKeyboardNotifications()
     }
     
-// MARK:  Actions >>>
+
+    // Function to pick an image (passed source type by "Pick An Image From..." actions below
+    func pickAnImage(sourceType: UIImagePickerController.SourceType) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = sourceType
+        present(imagePicker, animated: true, completion: nil)
+    }
+
+    // MARK: Actions
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        pickAnImage(sourceType: .photoLibrary)
     }
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        imagePicker.sourceType = .camera
-        present(imagePicker, animated: true, completion: nil)
+        pickAnImage(sourceType: .camera)
     }
     
     @IBAction func cancelMeme() {
@@ -78,7 +76,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK:  Image Picker Controller takes image from Album or Camera and returns it
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imagePickerView.contentMode = .scaleAspectFill
+            imagePickerView.contentMode = .scaleAspectFit
             imagePickerView.image = image
         }
         dismiss(animated: true, completion: nil)
@@ -92,20 +90,20 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 // MARK: Meme Text Field setup
     
     // Font styling
-//    let memeTextAttributes: [String: Any] =
-//        [
-//            NSAttributedString.Key.strokeColor.rawValue: UIColor.black,
-//            NSAttributedString.Key.foregroundColor.rawValue: UIColor.white,
-//            NSAttributedString.Key.font.rawValue: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-//            NSAttributedString.Key.strokeWidth.rawValue: -3.0
-//        ]
-//    
-//    // Text Field setup
-//    func setupTextFields(_ textField: UITextField, with default: String) {
-//        textField.defaultTextAttributes = memeTextAttributes
-//        textField.textAlignment = .center
-//
-//    }
+    let memeTextAttributes: [NSAttributedString.Key: Any] =
+        [
+            NSAttributedString.Key.strokeColor: UIColor.black,
+            NSAttributedString.Key.foregroundColor: UIColor.white,
+            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+            NSAttributedString.Key.strokeWidth: -4.0
+        ]
+    
+    // Text Field setup
+    func setupTextFields(_ textField: UITextField, with default: String) {
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.textAlignment = .center
+        textField.delegate = self
+    }
     
     
 // MARK: Keyboard Functions >>>
