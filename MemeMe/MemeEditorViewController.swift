@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
 // MARK: Outlets >>>
     
@@ -53,18 +53,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         present(imagePicker, animated: true, completion: nil)
     }
 
-    // MARK: Actions
-// Previously used two actions
-//    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-//        pickAnImage(sourceType: .photoLibrary)
-//    }
-//
-//    @IBAction func pickAnImageFromCamera(_ sender: Any) {
-//        pickAnImage(sourceType: .camera)
-//    }
+// MARK: Actions
     
     // Single action using tags to pass which source to get image from
-    @IBAction func pickFromButtom(_ sender: UIBarButtonItem){
+    @IBAction func pickFromButton(_ sender: UIBarButtonItem){
         if sender.tag == 0 {
             pickAnImage(sourceType: .camera)
         }
@@ -82,7 +74,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
-    // MARK:  Image Picker Controller takes image from Album or Camera and returns it
+// MARK:  Image Picker Controller takes image from Album or Camera and returns it
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imagePickerView.contentMode = .scaleAspectFit
@@ -98,29 +90,27 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
 // MARK: Meme Text Field setup
     
-    // Font styling
-    let memeTextAttributes: [NSAttributedString.Key: Any] =
-        [
-            NSAttributedString.Key.strokeColor: UIColor.black,
-            NSAttributedString.Key.foregroundColor: UIColor.white,
-            NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-            NSAttributedString.Key.strokeWidth: -4.0
-        ]
-    
     // Text Field setup
     func setupTextFields(_ textField: UITextField, with default: String) {
+        let memeTextAttributes: [NSAttributedString.Key: Any] =
+            [
+                NSAttributedString.Key.strokeColor: UIColor.black,
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
+                NSAttributedString.Key.strokeWidth: -4.0
+            ]
         textField.defaultTextAttributes = memeTextAttributes
         textField.textAlignment = .center
         textField.delegate = self
     }
     
     
-// MARK: Keyboard Functions >>>
+// MARK: Keyboard Functions
     
     // Subscribe to keyboard notifications
     func subscribeToKeyboardNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(MemeEditorViewController.keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     // Unsubscribe to keyboard notifications
@@ -152,13 +142,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         
-        return true;
+        return true
     }
     
-// <<< Keyboard Functions
     
-    
-    // MARK:  Save, Generate & Share meme functions
+// MARK:  Save, Generate & Share meme functions
     
     // Save Meme
     func save() {
