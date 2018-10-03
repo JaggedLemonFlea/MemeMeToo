@@ -22,12 +22,12 @@
                                 <items>
                                     <barButtonItem systemItem="camera" id="k3y-05-Kre">
                                         <connections>
-                                            <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="cVG-gl-E7n"/>
+                                            <action selector="pickFromButtom:" destination="BYZ-38-t0r" id="law-7O-bDX"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem title="Album" id="RaV-Fk-EmA">
+                                    <barButtonItem tag="1" title="Album" id="RaV-Fk-EmA">
                                         <connections>
-                                            <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="E0x-QH-UxT"/>
+                                            <action selector="pickFromButtom:" destination="BYZ-38-t0r" id="Jwx-BQ-3NA"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -58,7 +58,7 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="d4N-8a-VHd">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4N-8a-VHd">
                                 <rect key="frame" x="119.66666666666669" y="663" width="136" height="36"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>

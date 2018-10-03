@@ -21,7 +21,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
     
-// <<< Outlets
     
     let imagePicker = UIImagePickerController()
     
@@ -55,13 +54,23 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
 
     // MARK: Actions
+// Previously used two actions
+//    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
+//        pickAnImage(sourceType: .photoLibrary)
+//    }
+//
+//    @IBAction func pickAnImageFromCamera(_ sender: Any) {
+//        pickAnImage(sourceType: .camera)
+//    }
     
-    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        pickAnImage(sourceType: .photoLibrary)
-    }
-    
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        pickAnImage(sourceType: .camera)
+    // Single action using tags to pass which source to get image from
+    @IBAction func pickFromButtom(_ sender: UIBarButtonItem){
+        if sender.tag == 0 {
+            pickAnImage(sourceType: .camera)
+        }
+        if sender.tag == 1 {
+            pickAnImage(sourceType: .photoLibrary)
+        }
     }
     
     @IBAction func cancelMeme() {
