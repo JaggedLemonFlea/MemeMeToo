@@ -13,8 +13,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 // MARK: Outlets >>>
     
     @IBOutlet weak var imagePickerView: UIImageView!
-    @IBOutlet weak var tfTop: UITextField!
-    @IBOutlet weak var tfBottom: UITextField!
+    @IBOutlet weak var topTextField: UITextField!
+    @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -34,8 +34,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = imagePickerView.image != nil
         cancelButton.isEnabled = imagePickerView.image != nil
-        setupTextFields(tfTop, with: "TOP")
-        setupTextFields(tfBottom, with: "BOTTOM")
+        setupTextFields(topTextField, with: "TOP")
+        setupTextFields(bottomTextField, with: "BOTTOM")
         subscribeToKeyboardNotifications()
     }
     
@@ -77,8 +77,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePickerView.image = nil
         shareButton.isEnabled = false
         cancelButton.isEnabled = false
-        tfTop.text = nil
-        tfBottom.text = nil
+        topTextField.text = nil
+        bottomTextField.text = nil
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
@@ -131,7 +131,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Move frame up when botton text field is clicked and keyboard shows
     @objc func keyboardWillShow(_ notification: Notification) {
-        if tfBottom.isEditing {
+        if bottomTextField.isEditing {
             view.frame.origin.y = -getKeyboardHeight(notification)
         }
     }
@@ -162,7 +162,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // Save Meme
     func save() {
-        let meme = Meme(topText: tfTop.text!, bottomText: tfBottom.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
+        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
         print(meme)
     }
     
