@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		66CE0D8B2153F0F800970402 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		66CE0D8B2153F0F800970402 /* MemeMeToo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMeToo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66CE0D8E2153F0F800970402 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66CE0D902153F0F800970402 /* MemeEditorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeEditorViewController.swift; sourceTree = "<group>"; };
 		66CE0D932153F0F800970402 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 		66CE0D8C2153F0F800970402 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				66CE0D8B2153F0F800970402 /* MemeMe.app */,
+				66CE0D8B2153F0F800970402 /* MemeMeToo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,9 +70,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		66CE0D8A2153F0F800970402 /* MemeMe */ = {
+		66CE0D8A2153F0F800970402 /* MemeMeToo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 66CE0D9D2153F0FB00970402 /* Build configuration list for PBXNativeTarget "MemeMe" */;
+			buildConfigurationList = 66CE0D9D2153F0FB00970402 /* Build configuration list for PBXNativeTarget "MemeMeToo" */;
 			buildPhases = (
 				66CE0D872153F0F800970402 /* Sources */,
 				66CE0D882153F0F800970402 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = MemeMe;
+			name = MemeMeToo;
 			productName = MemeMe;
-			productReference = 66CE0D8B2153F0F800970402 /* MemeMe.app */;
+			productReference = 66CE0D8B2153F0F800970402 /* MemeMeToo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 66CE0D862153F0F800970402 /* Build configuration list for PBXProject "MemeMe" */;
+			buildConfigurationList = 66CE0D862153F0F800970402 /* Build configuration list for PBXProject "MemeMeToo" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				66CE0D8A2153F0F800970402 /* MemeMe */,
+				66CE0D8A2153F0F800970402 /* MemeMeToo */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sjbrylka.MemeMe;
+				PRODUCT_BUNDLE_IDENTIFIER = sjbrylka.MemeMeToo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -311,7 +311,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = sjbrylka.MemeMe;
+				PRODUCT_BUNDLE_IDENTIFIER = sjbrylka.MemeMeToo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -321,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		66CE0D862153F0F800970402 /* Build configuration list for PBXProject "MemeMe" */ = {
+		66CE0D862153F0F800970402 /* Build configuration list for PBXProject "MemeMeToo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66CE0D9B2153F0FB00970402 /* Debug */,
@@ -330,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		66CE0D9D2153F0FB00970402 /* Build configuration list for PBXNativeTarget "MemeMe" */ = {
+		66CE0D9D2153F0FB00970402 /* Build configuration list for PBXNativeTarget "MemeMeToo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				66CE0D9E2153F0FB00970402 /* Debug */,
