@@ -1,2 +1,2 @@
-# MemeMe-1
-MemeMe Version 1 Project for Udacity iOS Developer Nanodegree program
+# MemeMeToo
+MemeMe Version 2 Project for Udacity iOS Developer Nanodegree program
