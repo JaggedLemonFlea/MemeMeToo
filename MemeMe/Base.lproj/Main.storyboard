@@ -88,16 +88,16 @@
             </objects>
             <point key="canvasLocation" x="-842.39999999999998" y="-204.64767616191907"/>
         </scene>
-        <!--MemeMeToo-->
+        <!--Sent Memes-->
         <scene sceneID="LZo-FW-XuH">
             <objects>
-                <tableViewController id="Co6-KK-8aZ" customClass="SentMemesTableVC" customModule="MemeMeToo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Co6-KK-8aZ" userLabel="Sent Memes" customClass="SentMemesTableVC" customModule="MemeMeToo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="idd-pL-jKd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="A5p-sR-SBn">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="70" id="A5p-sR-SBn" userLabel="MemeCell">
                                 <rect key="frame" x="0.0" y="28" width="375" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="A5p-sR-SBn" id="BYf-Mh-x0e">
@@ -131,6 +131,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="1hf-YG-tDY" kind="show" identifier="MemeDetailViewController" id="yYC-v4-Mgm"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiv-cw-Q4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -203,10 +206,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="aeW-7t-pJD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="559"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="TOP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="flS-gB-C9d" userLabel="Top Text Field">
-                                <rect key="frame" x="154.5" y="94" width="66" height="36"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="TOP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="flS-gB-C9d" userLabel="Top Text Field">
+                                <rect key="frame" x="10" y="94" width="355" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="LCh-ME-CDX"/>
+                                </constraints>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="x8k-8j-PKq">
@@ -227,16 +233,22 @@
                                 </items>
                             </navigationBar>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d4N-8a-VHd" userLabel="Bottom Text Field">
-                                <rect key="frame" x="119.5" y="557" width="136" height="36"/>
+                                <rect key="frame" x="10" y="558" width="355" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="vmQ-4t-DP2"/>
+                                </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="flS-gB-C9d" secondAttribute="trailing" constant="10" id="2Bu-n9-hMD"/>
                             <constraint firstItem="7sK-QU-8hK" firstAttribute="top" secondItem="aeW-7t-pJD" secondAttribute="bottom" id="2Zd-BE-9cf"/>
                             <constraint firstItem="aeW-7t-pJD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="3za-Q1-hlh"/>
+                            <constraint firstItem="d4N-8a-VHd" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="7dR-gl-63Z"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="d4N-8a-VHd" secondAttribute="trailing" constant="10" id="8CU-qq-WhN"/>
                             <constraint firstItem="aeW-7t-pJD" firstAttribute="top" secondItem="x8k-8j-PKq" secondAttribute="bottom" id="8Nr-ME-EZ1"/>
                             <constraint firstItem="x8k-8j-PKq" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="JTd-mR-HyJ"/>
                             <constraint firstItem="7sK-QU-8hK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="JnV-Px-RaI"/>
@@ -245,6 +257,7 @@
                             <constraint firstItem="aeW-7t-pJD" firstAttribute="top" secondItem="x8k-8j-PKq" secondAttribute="bottom" id="SYE-6M-Mwn"/>
                             <constraint firstItem="7sK-QU-8hK" firstAttribute="top" secondItem="d4N-8a-VHd" secondAttribute="bottom" constant="30" id="Ujd-wa-tqU"/>
                             <constraint firstItem="d4N-8a-VHd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZSv-WH-2xg"/>
+                            <constraint firstItem="flS-gB-C9d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="big-95-Ldr"/>
                             <constraint firstItem="7sK-QU-8hK" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="c8Y-dv-RSs"/>
                             <constraint firstItem="7sK-QU-8hK" firstAttribute="top" secondItem="aeW-7t-pJD" secondAttribute="bottom" id="g4q-V4-6zU"/>
                             <constraint firstItem="aeW-7t-pJD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="hCc-hf-61h"/>
@@ -263,14 +276,16 @@
                         <outlet property="shareButton" destination="M3w-pS-dcJ" id="NU6-ZM-chT"/>
                         <outlet property="toolBar" destination="7sK-QU-8hK" id="ciY-lf-lUn"/>
                         <outlet property="topTextField" destination="flS-gB-C9d" id="3WU-nN-9XG"/>
+                        <segue destination="1hf-YG-tDY" kind="show" id="jdM-mf-pkD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="54" y="-206"/>
+            <point key="canvasLocation" x="53.600000000000001" y="-206.44677661169416"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="hHy-bS-RJc"/>
+        <segue reference="yYC-v4-Mgm"/>
     </inferredMetricsTieBreakers>
 </document>

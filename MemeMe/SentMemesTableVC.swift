@@ -22,14 +22,14 @@ class SentMemesTableVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.memes.count
+        return memes.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeCell", for: indexPath) as! SentMemesTableViewCell
         let meme = memes[indexPath.row]
         cell.memeLabel?.text = meme.topText + "..." + meme.bottomText
-        cell.memedImage?.image = meme.memedImage
+        cell.memeImageView?.image = meme.memedImage
         return cell
     }
     

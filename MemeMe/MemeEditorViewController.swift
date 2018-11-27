@@ -180,13 +180,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func shareMeme(){
         let memedImage = generateMemedImage()
         let activityView = UIActivityViewController(activityItems: [memedImage], applicationActivities: nil)
+        present(activityView, animated: true, completion: nil)
+        
+        // save meme
         activityView.completionWithItemsHandler = {(activity, completed, items, error) in
             if (completed) {
                 let _ = self.save()
+                self.dismiss(animated: true, completion: nil)
             }
         }
-        
-        self.present(activityView, animated: true, completion: nil)
     }
     
 }

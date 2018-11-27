@@ -6,11 +6,12 @@
 //  Copyright © 2018 Steve Brylka. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class SentMemesTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var memedImage: UIImageView!
+    @IBOutlet weak var memeImageView: UIImageView!
     @IBOutlet weak var memeLabel: UILabel!
     
 }
