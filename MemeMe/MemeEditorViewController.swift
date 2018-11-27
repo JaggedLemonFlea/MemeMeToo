@@ -33,7 +33,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         super.viewWillAppear(animated)
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = imagePickerView.image != nil
-        cancelButton.isEnabled = imagePickerView.image != nil
+        //cancelButton.isEnabled = imagePickerView.image != nil
         setupTextFields(topTextField, with: "TOP")
         setupTextFields(bottomTextField, with: "BOTTOM")
         subscribeToKeyboardNotifications()
@@ -65,13 +65,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         }
     }
     
-    @IBAction func cancelMeme() {
+    @IBAction func cancelMeme(_ sender: Any) {
         imagePickerView.image = nil
         shareButton.isEnabled = false
-        cancelButton.isEnabled = false
-        topTextField.text = nil
-        bottomTextField.text = nil
+        //cancelButton.isEnabled = false
+        //topTextField.text = nil
+        //bottomTextField.text = nil
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        dismiss(animated: true, completion: nil)
     }
     
 // MARK:  Image Picker Controller takes image from Album or Camera and returns it
@@ -150,8 +151,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     // Save Meme
     func save() {
+        
+        // Update the meme
         let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imagePickerView.image!, memedImage: generateMemedImage())
-        print(meme)
+        
+        // Add it to the memes array on the Applicatoin Delegate
+        (UIApplication.shared.delegate as! AppDelegate).memes.append(meme)
     }
     
     // Generate Meme
