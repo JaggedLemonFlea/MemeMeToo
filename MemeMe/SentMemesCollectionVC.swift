@@ -29,4 +29,28 @@ class SentMemesCollectionVC: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
     }
     
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return memes.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SentMemesCollectionViewCell", for: indexPath) as! SentMemesCollectionViewCell
+        
+        let meme: Meme = memes[(indexPath as NSIndexPath).row]
+        cell.memeImageView.image = meme.memedImage
+        
+        return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        _ = (UIApplication.shared.delegate as! AppDelegate).memes[(indexPath as NSIndexPath).row]
+        performSegue(withIdentifier: "MemeDetailViewController", sender: memes)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MemeDetailViewController" {
+            let MemeDetailViewController = segue.destination as! MemeDetailViewController
+            MemeDetailViewController.meme = sender as? Meme
+        }
+    }
 }
