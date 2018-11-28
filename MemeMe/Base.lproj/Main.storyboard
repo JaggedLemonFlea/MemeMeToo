@@ -91,7 +91,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="CG9-nZ-ypt" id="UmK-l8-HCi"/>
-                        <segue destination="1hf-YG-tDY" kind="presentation" id="DLL-do-GEW"/>
+                        <segue destination="1hf-YG-tDY" kind="push" identifier="MemeDetailViewController" id="DLL-do-GEW"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSD-en-7Gv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -146,7 +146,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="1hf-YG-tDY" kind="presentation" identifier="MemeDetailViewController" id="yYC-v4-Mgm"/>
+                        <segue destination="1hf-YG-tDY" kind="show" identifier="MemeDetailViewController" id="yYC-v4-Mgm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kiv-cw-Q4p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -169,6 +169,10 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="BPP-jK-yLb"/>
                     </view>
+                    <navigationItem key="navigationItem" id="JGI-EO-Irb"/>
+                    <connections>
+                        <outlet property="imageView" destination="sfj-6w-dH2" id="G0k-rD-vlw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3A-GX-uIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -299,7 +303,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VmA-Pm-qbc"/>
+        <segue reference="hHy-bS-RJc"/>
         <segue reference="DLL-do-GEW"/>
     </inferredMetricsTieBreakers>
 </document>

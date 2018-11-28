@@ -6,6 +6,7 @@
 //  Copyright © 2018 Steve Brylka. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class MemeDetailViewController: UIViewController {
