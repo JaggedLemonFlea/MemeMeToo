@@ -27,13 +27,12 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     override func viewDidLoad() {
         super.viewDidLoad()
         imagePicker.delegate = self
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         shareButton.isEnabled = imagePickerView.image != nil
-        //cancelButton.isEnabled = imagePickerView.image != nil
         setupTextFields(topTextField, with: "TOP")
         setupTextFields(bottomTextField, with: "BOTTOM")
         subscribeToKeyboardNotifications()
@@ -68,10 +67,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBAction func cancelMeme(_ sender: Any) {
         imagePickerView.image = nil
         shareButton.isEnabled = false
-        //cancelButton.isEnabled = false
-        //topTextField.text = nil
-        //bottomTextField.text = nil
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         dismiss(animated: true, completion: nil)
     }
     
