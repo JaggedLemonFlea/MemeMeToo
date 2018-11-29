@@ -53,22 +53,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="CG9-nZ-ypt">
-                            <size key="itemSize" width="165" height="164"/>
+                            <size key="itemSize" width="94" height="94"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SentMemesCollectionViewCell" id="j8W-YH-FDB" customClass="SentMemesCollectionViewCell" customModule="MemeMeToo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="165" height="164"/>
+                                <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                    <rect key="frame" x="0.0" y="0.0" width="165" height="164"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82Z-Nu-EVf" userLabel="Meme Image View">
-                                            <rect key="frame" x="0.0" y="0.0" width="165" height="164"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="82Z-Nu-EVf" userLabel="Meme Image View">
+                                            <rect key="frame" x="0.0" y="0.0" width="94" height="94"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="94" id="d1u-dG-d7h"/>
+                                                <constraint firstAttribute="height" constant="94" id="e7b-iP-HXA"/>
+                                            </constraints>
                                         </imageView>
                                     </subviews>
                                 </view>
@@ -91,7 +94,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="CG9-nZ-ypt" id="UmK-l8-HCi"/>
-                        <segue destination="1hf-YG-tDY" kind="push" identifier="MemeDetailViewController" id="DLL-do-GEW"/>
+                        <segue destination="1hf-YG-tDY" kind="show" identifier="MemeDetailViewController" id="DLL-do-GEW"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSD-en-7Gv" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -161,12 +164,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfj-6w-dH2">
-                                <rect key="frame" x="0.0" y="67" width="375" height="533"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sfj-6w-dH2">
+                                <rect key="frame" x="9" y="78" width="356" height="528"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="sfj-6w-dH2" firstAttribute="top" secondItem="BPP-jK-yLb" secondAttribute="top" constant="45" id="1wA-yw-PSG"/>
+                            <constraint firstItem="sfj-6w-dH2" firstAttribute="centerX" secondItem="1Cs-DL-dKC" secondAttribute="centerX" id="a28-Z8-XMa"/>
+                            <constraint firstItem="sfj-6w-dH2" firstAttribute="centerY" secondItem="1Cs-DL-dKC" secondAttribute="centerY" id="h59-qo-yhz"/>
+                            <constraint firstItem="sfj-6w-dH2" firstAttribute="leading" secondItem="BPP-jK-yLb" secondAttribute="leading" constant="9" id="wWq-W5-N2I"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="BPP-jK-yLb"/>
                     </view>
                     <navigationItem key="navigationItem" id="JGI-EO-Irb"/>
@@ -176,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q3A-GX-uIn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="284" y="699"/>
+            <point key="canvasLocation" x="284" y="698.5007496251875"/>
         </scene>
         <!--Table-->
         <scene sceneID="M89-mQ-6Fy">
@@ -303,7 +311,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="hHy-bS-RJc"/>
+        <segue reference="VmA-Pm-qbc"/>
         <segue reference="DLL-do-GEW"/>
     </inferredMetricsTieBreakers>
 </document>

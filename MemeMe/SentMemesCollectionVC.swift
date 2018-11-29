@@ -26,13 +26,27 @@ class SentMemesCollectionVC: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let space:CGFloat = 3.0
-        let widthDimention = (view.frame.size.width - (2 * space)) / 3.0
-        let heightDimention = (view.frame.size.width - (2 * space)) / 3.0
+        let space: CGFloat
+        let dimension: CGFloat
+        if UIDevice.current.orientation.isPortrait {
+            space = 3.0
+            dimension = (view.frame.size.width - (2 * space)) / 3
+        } else {
+            space = 1.0
+            dimension = (view.frame.size.width - (1 * space)) / 5
+        }
         
         flowLayout.minimumInteritemSpacing = space
-        flowLayout.minimumLineSpacing = space
-        flowLayout.itemSize = CGSize(width: widthDimention, height: heightDimention)
+        flowLayout.itemSize = CGSize(width: dimension, height: dimension)
+        
+        
+//        let space:CGFloat = 3.0
+//        let widthDimention = (view.frame.size.width - (2 * space)) / 3.0
+//        let heightDimention = (view.frame.size.width - (2 * space)) / 3.0
+//
+//        flowLayout.minimumInteritemSpacing = space
+//        flowLayout.minimumLineSpacing = space
+//        flowLayout.itemSize = CGSize(width: widthDimention, height: heightDimention)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -50,7 +64,7 @@ class SentMemesCollectionVC: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         _ = (UIApplication.shared.delegate as! AppDelegate).memes[(indexPath as NSIndexPath).row]
-        performSegue(withIdentifier: "MemeDetailViewController", sender: memes)
+        performSegue(withIdentifier: "MemeDetailViewController", sender: memes[(indexPath as NSIndexPath).row])
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
